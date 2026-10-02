@@ -1,18 +1,17 @@
 import { generateToken } from "../services/token.service.js";
 
-export const createToken = (req,res)=>{
-    try{
-        const {userName, password } = req.body;
-        if( !userName || password ) {
+export const createToken = (req, res) => {
+    try {
+        const { userName, password } = req.body;
+
+        if (!userName || !password) {
             return res.status(400).json({
                 success: false,
-                message: "userId, ownerCode and days are required"
-            })
+                message: "userName and password are required"
+            });
         }
 
-        const token = generateToken(
-            userName, password
-        );
+        const token = generateToken(userName, password);
 
         return res.status(200).json({
             success: true,
@@ -21,9 +20,8 @@ export const createToken = (req,res)=>{
                 token
             }
         });
-     } catch (error) {
-
-        console.error(error);
+    } catch (error) {
+        console.error("Token generation error:", error);
 
         return res.status(500).json({
             success: false,

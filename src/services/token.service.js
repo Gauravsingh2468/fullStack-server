@@ -9,4 +9,6 @@ export const generateToken = (userName, password ) => {
             expiresIn: `${15}d`
         }
     );
+
+    return token;
 }
