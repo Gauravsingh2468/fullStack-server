@@ -1,4 +1,4 @@
-import {generateToken} from "../services/token.service"
+import { generateToken } from "../services/token.service.js";
 
 export const createToken = (req,res)=>{
     try{
