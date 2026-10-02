@@ -5,5 +5,5 @@ import tokenRoutes from "./routes/token.routes.js";
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/api/token", tokenRoutes);
+app.use("/api", tokenRoutes);
 export default app;
