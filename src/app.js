@@ -4,7 +4,7 @@ import tokenRouter from "./routes/token.router.js";
 
 const app = express();
 app.use(cors({
-    origin: "http://localhost:5174/",
+    origin: "http://localhost:5174",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
