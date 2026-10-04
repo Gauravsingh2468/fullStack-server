@@ -2,8 +2,8 @@ import db from "../config/db.js";
 import { generateToken } from "../services/token.service.js";
 
 export const createToken = async (req, res) => {
-
     const querry = "SELECT * FROM users where user_name = ?";
+
     try {
         const { userName, password } = req.body;
         if (!userName || !password) {

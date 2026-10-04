@@ -8,5 +8,7 @@ export const DB_USER = "root"
 export const DB_PASSWORD = "root"
 export const DB_NAME = "full_stack_project"
 export const DB_PORT = 3306
+export const EMAIL_USER = "gs747079@gmail.com"
+export const EMAIL_PASSWORD = "mdxh vziu ugdb atfa"
 
 // export const DB_URL = `mysql://34fmAhzLNnKJoPR.root:sg78oTOPBfklT9eb@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/full_stack_project?ssl={"rejectUnauthorized":true}`
