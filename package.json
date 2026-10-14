@@ -1,0 +1,30 @@
+{
+  "name": "full-stack-server",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Gauravsingh2468/fullStack-server#readme",
+  "bugs": {
+    "url": "https://github.com/Gauravsingh2468/fullStack-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gauravsingh2468/fullStack-server.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.5",
+    "nodemailer": "^10.0.14",
+    "resend": "^6.32.1"
+  }
+}
