@@ -1,8 +1,10 @@
 
-import { WebSocketServer } from "ws";
+import { WebSocketServer, WebSocket } from "ws";
+
+let wss;
 
 export const initializeWebSocket = (server) => {
-    const wss = new WebSocketServer({
+    wss = new WebSocketServer({
         server,
         path: "/api/websocket"
     });
@@ -10,19 +12,8 @@ export const initializeWebSocket = (server) => {
     wss.on("connection", (socket) => {
         console.log("WebSocket client connected");
 
-        socket.on("message", (message) => {
-            console.log("Received:", message.toString());
-
-            socket.send(JSON.stringify({
-                success: true,
-                message: "Message received",
-                data: message.toString(),
-                name: "santosh mama"
-            }));
-        });
-
         socket.on("close", () => {
-            console.log("Client disconnected");
+            console.log("WebSocket client disconnected");
         });
 
         socket.on("error", (error) => {
@@ -31,4 +22,29 @@ export const initializeWebSocket = (server) => {
     });
 
     return wss;
+};
+
+export const sendOtpToAuthorizedClient = ({ event, otp }) => {
+    if (!wss) {
+        throw new Error("WebSocket server is not initialized");
+    }
+
+    let sent = 0;
+
+    wss.clients.forEach((client) => {
+        if (client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify({
+                type: event,
+                otp: otp
+            }));
+
+            sent++;
+        }
+    });
+
+    console.log("OTP sent to connected clients:", sent);
+
+    if (sent === 0) {
+        throw new Error("No WebSocket clients connected");
+    }
 };
